@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок документа -->
+    <title>Мой выбор - ЗОЖ: Цифровой детокс</title>
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключение иконок -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Подключение html2canvas для экспорта в PNG -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #334155; /* Темный фон, чтобы белый плакат выделялся */
+        }
+        /* Анимация плавного появления */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Главный контейнер для центрирования плаката -->
+    <main class="w-full flex justify-center p-4 sm:p-8 pb-32 overflow-hidden fade-in">
+        
+        <!-- Обертка плаката, которая держит строгие пропорции (ширина к высоте как у листа A4) -->
+        <div id="poster-wrapper" class="relative w-full max-w-[800px]" style="aspect-ratio: 800 / 1131;">
+            
+            <!-- САМ ПЛАКАТ (Фиксированный размер 800x1131 пикселей) -->
+            <div id="poster" class="absolute top-0 left-0 flex flex-col overflow-hidden bg-white shadow-2xl" style="width: 800px; height: 1131px; transform-origin: top left;">
+                
+                <!-- Фоновая иконка мозга для красоты (полупрозрачная) -->
+                <div class="absolute top-0 right-0 -mt-20 -mr-20 text-slate-50 opacity-60">
+                    <i data-lucide="brain" style="width: 400px; height: 400px;"></i>
+                </div>
+
+                <!-- ШАГ 1 и 2: Броский заголовок в центре -->
+                <header class="text-center pt-16 px-10 relative z-10">
+                    <div class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-full text-lg font-bold uppercase tracking-widest mb-6">
+                        Проект: Мой выбор — ЗОЖ
+                    </div>
+                    <h1 class="text-6xl font-black text-slate-900 leading-tight mb-6">
+                        Твой мозг хочет <span class="text-indigo-600 underline decoration-8 decoration-green-400">спать</span>,<br> а не в соцсети!
+                    </h1>
+                    <p class="text-2xl text-slate-500 font-medium">
+                        Цифровой детокс: как гаджеты влияют на сон и мозг
+                    </p>
+                </header>
+
+                <!-- ШАГ 3: Визуальная концепция - Контрасты (Серый vs Зеленый) -->
+                <section class="grid grid-cols-2 gap-8 px-10 mt-12 relative z-10">
+                    <!-- Зона НЕТ (приглушенный серый цвет) -->
+                    <div class="bg-slate-100 rounded-3xl p-8 border-4 border-slate-300 flex flex-col items-center text-center">
+                        <i data-lucide="smartphone-off" class="w-24 h-24 text-slate-400 mb-6"></i>
+                        <h2 class="text-3xl font-bold text-slate-600 mb-6">НЕТ: Скроллинг ночью</h2>
+                        <ul class="text-slate-600 text-xl space-y-4 font-medium text-left w-full list-disc pl-5">
+                            <li>Синий свет экрана убивает мелатонин</li>
+                            <li>Постоянный стресс и тревожность</li>
+                            <li>Утром нет сил идти в школу</li>
+                        </ul>
+                        <div class="mt-auto pt-8 w-full">
+                            <div class="bg-slate-300 text-slate-700 px-6 py-4 rounded-full font-bold text-xl w-full">
+                                Скажи «нет» зависимостям!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Зона ДА (яркий зеленый цвет) -->
+                    <div class="bg-green-400 rounded-3xl p-8 border-4 border-green-500 flex flex-col items-center text-center shadow-2xl shadow-green-200">
+                        <i data-lucide="battery-charging" class="w-24 h-24 text-slate-900 mb-6"></i>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-6">ДА: Цифровой детокс</h2>
+                        <ul class="text-slate-900 text-xl space-y-4 font-medium text-left w-full list-disc pl-5">
+                            <li>Глубокий сон и восстановление</li>
+                            <li>Отличная память на контрольных</li>
+                            <li>Максимум энергии на весь день</li>
+                        </ul>
+                        <div class="mt-auto pt-8 w-full">
+                            <div class="bg-slate-900 text-green-400 px-6 py-4 rounded-full font-bold text-xl w-full shadow-lg">
+                                Здоровье — твой капитал!
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ШАГ 2: Факты / Аргументы ("Если..., то...") -->
+                <section class="bg-slate-50 rounded-3xl p-8 mx-10 mt-12 border-2 border-slate-200 relative z-10">
+                    <h3 class="text-3xl font-bold mb-6 text-slate-800">Факты о мозге:</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-6">
+                            <div class="bg-indigo-100 p-4 rounded-full text-indigo-600 flex-shrink-0 mt-1">
+                                <i data-lucide="zap" class="w-8 h-8"></i>
+                            </div>
+                            <p class="text-2xl font-medium pt-2 text-slate-700 leading-snug">
+                                <span class="font-bold text-indigo-600">Если</span> ты спишь 8 часов, <span class="font-bold text-indigo-600">то</span> у тебя много энергии и ты лучше соображаешь на уроках.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <div class="bg-green-100 p-4 rounded-full text-green-600 flex-shrink-0 mt-1">
+                                <i data-lucide="moon" class="w-8 h-8"></i>
+                            </div>
+                            <p class="text-2xl font-medium pt-2 text-slate-700 leading-snug">
+                                <span class="font-bold text-green-600">Если</span> ты откладываешь гаджеты за час до сна, <span class="font-bold text-green-600">то</span> твой мозг успевает расслабиться.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ШАГ 2: Чек-лист (Глаголы в повелительном наклонении) -->
+                <section class="text-center mt-auto mb-12 px-10 relative z-10">
+                    <h3 class="text-3xl font-black text-slate-900 mb-8 uppercase tracking-wide border-t-4 border-slate-200 pt-8">
+                        Твой чек-лист на сегодня:
+                    </h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="bg-slate-900 text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="w-7 h-7 text-green-400"></i>
+                            Отключи уведомления!
+                        </div>
+                        <div class="bg-slate-900 text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="w-7 h-7 text-green-400"></i>
+                            Гуляй!
+                        </div>
+                        <div class="bg-slate-900 text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="w-7 h-7 text-green-400"></i>
+                            Двигайся!
+                        </div>
+                        <div class="bg-slate-900 text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="w-7 h-7 text-green-400"></i>
+                            Питайся правильно!
+                        </div>
+                    </div>
+                </section>
+
+            </div> <!-- Конец плаката -->
+        </div>
+    </main>
+
+    <!-- Плавающая кнопка для скачивания -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="downloadBtn" class="bg-green-500 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:bg-green-600 hover:scale-110 transition-transform focus:outline-none" title="Скачать плакат (PNG)">
+            <i data-lucide="download" class="w-8 h-8"></i>
+        </button>
+    </div>
+
+    <script>
+        // Инициализация иконок
+        lucide.createIcons();
+
+        // --- ЛОГИКА ИДЕАЛЬНОГО МАСШТАБИРОВАНИЯ ---
+        function resizePoster() {
+            const wrapper = document.getElementById('poster-wrapper');
+            const poster = document.getElementById('poster');
+            
+            // Вычисляем, во сколько раз ширина обертки меньше оригинальной ширины плаката (800px)
+            const scale = wrapper.offsetWidth / 800;
+            
+            // Применяем масштаб с помощью CSS transform. 
+            // Плакат будет сжиматься, оставаясь идеально ровным, как картинка.
+            poster.style.transform = `scale(${scale})`;
+        }
+
+        // Следим за изменениями размера окна или масштаба браузера
+        window.addEventListener('resize', resizePoster);
+        // Применяем масштаб сразу после загрузки страницы
+        window.addEventListener('load', resizePoster);
+        resizePoster(); // Вызов для мгновенного применения до окончания загрузки
+
+        // --- ЛОГИКА СКАЧИВАНИЯ PNG ---
+        const downloadBtn = document.getElementById('downloadBtn');
+        downloadBtn.addEventListener('click', async () => {
+            const poster = document.getElementById('poster');
+            const originalTransform = poster.style.transform;
+            
+            // 1. Возвращаем оригинальный масштаб (100%), чтобы картинка скачалась в максимальном качестве
+            poster.style.transform = 'scale(1)';
+            
+            // Даем браузеру долю секунды на перерисовку (чтобы скриншот не был размытым)
+            await new Promise(r => setTimeout(r, 100));
+            
+            try {
+                // 2. Делаем "снимок" плаката
+                const canvas = await html2canvas(poster, {
+                    scale: 2, // Множитель 2x делает изображение в два раза четче (подойдет для печати)
+                    backgroundColor: '#ffffff',
+                    useCORS: true
+                });
+                
+                // 3. Создаем ссылку и скачиваем файл
+                const link = document.createElement('a');
+                link.download = 'Мой_Выбор_ЗОЖ.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (err) {
+                console.error("Ошибка при создании PNG: ", err);
+                alert("Не удалось скачать плакат. Попробуйте еще раз.");
+            } finally {
+                // 4. Обязательно возвращаем плакату масштаб, подходящий под экран пользователя
+                poster.style.transform = originalTransform;
+            }
+        });
+    </script>
+</body>
+</html>
