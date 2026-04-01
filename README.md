@@ -1,6 +1,6 @@
 # Мой выбор - ЗОЖ: Цифровой детокс
 
-Демо: https://kusokmedi.github.io/piramidapitanija/
+Демо: https://kusokmedi.github.io/plakatnaurokrusskogo/
 
 **Простой учебный проект на HTML/CSS/JS** для создания интерактивного плаката о цифровом детоксе и здоровье мозга.
 
